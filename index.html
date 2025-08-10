@@ -3,19 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Visualization</title>
+    <title>Adjoint Transformation Visualization</title>
     <style>
-      body { margin: 0; }
-      #vis-container {
-        width: 80vw;
-        height: 80vh;
-        margin: auto;
+      body { 
+        margin: 0; 
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #main-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+      }
+      .vis-container {
+        width: 40vw;
+        height: 40vw;
         border: 1px solid black;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .control-group {
+        display: flex;
+        flex-direction: column;
+      }
+      h3 {
+        margin-top: 0;
+      }
+      input {
+        width: 60px;
       }
     </style>
   </head>
   <body>
-    <div id="vis-container"></div>
+    <h1>Adjoint Transformation</h1>
+    <div id="main-container">
+      <div id="input-scene" class="vis-container"></div>
+      <div id="output-scene" class="vis-container"></div>
+    </div>
+    <div class="controls">
+        <div class="control-group">
+            <h3>Input Vector</h3>
+            <label>x: <input type="range" id="vec-x" min="-3" max="3" value="1" step="0.1"></label>
+            <label>y: <input type="range" id="vec-y" min="-3" max="3" value="1" step="0.1"></label>
+        </div>
+        <div class="control-group">
+            <h3>Transformation Matrix</h3>
+            <label>a: <input type="number" id="mat-a" value="1" step="0.1"></label>
+            <label>b: <input type="number" id="mat-b" value="0" step="0.1"></label>
+            <label>c: <input type="number" id="mat-c" value="0" step="0.1"></label>
+            <label>d: <input type="number" id="mat-d" value="1" step="0.1"></label>
+        </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
